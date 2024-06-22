@@ -1,3 +1,5 @@
+/* styles.css */
+
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to right, #00c6ff, #0072ff);
@@ -8,6 +10,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+.failure{
+    background: linear-gradient(to right, #ff0000, #b22222);
 }
 
 .container {
@@ -26,19 +32,10 @@ body {
     text-align: left;
 }
 
-.option-container {
-    margin-bottom: 15px;
+.main-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
     text-align: left;
-}
-
-.option-container label {
-    margin-left: 10px;
-    font-size: 1.1em;
-}
-
-input[type="radio"] {
-    transform: scale(1.2);
-    margin-right: 10px;
 }
 
 .button-link,
