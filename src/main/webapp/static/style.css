@@ -16,6 +16,10 @@ body {
     background: linear-gradient(to right, #ff0000, #b22222);
 }
 
+.victory {
+    background: linear-gradient(to right, #00c6ff, #7fffd4);
+}
+
 .container {
     width: 80%;
     max-width: 600px;
