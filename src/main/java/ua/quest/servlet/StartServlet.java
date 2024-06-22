@@ -19,6 +19,7 @@ public class StartServlet extends HttpServlet {
 
         currentSession.setAttribute("counter", 0);
         currentSession.setAttribute("ID", req.getRequestedSessionId());
+        currentSession.setAttribute("questionNumber", 0);
 
         getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
     }

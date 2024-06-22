@@ -11,7 +11,7 @@
     </header>
     <main class="main-content">
         <p>You lost. Try again</p>
-        <button onclick="window.location.href='/restart';">Retry</button>
+        <button onclick="window.location.href='/quest';" class="submit-button">Retry</button>
     </main>
 </div>
 
