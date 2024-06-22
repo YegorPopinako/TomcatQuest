@@ -7,17 +7,17 @@
 <body>
 <div class="container">
     <header class="header">
-        <h1>${question}</h1>
+        <h1>${question.getQuestion()}</h1>
     </header>
     <main class="main-content">
         <form action="/quest" method="get">
             <div class="option-container">
-                <input type="radio" id="option1" name="answer" value="1">
-                <label for="option1">${option1}</label>
+                <input type="radio" id="option1" name="answer" value="1" required>
+                <label for="option1">${question.getOption1()}</label>
             </div>
             <div class="option-container">
-                <input type="radio" id="option2" name="answer" value="2">
-                <label for="option2">${option2}</label>
+                <input type="radio" id="option2" name="answer" value="2" required>
+                <label for="option2">${question.getOption2()}</label>
             </div>
             <div>
                 <button type="submit" class="submit-button">Answer</button>
