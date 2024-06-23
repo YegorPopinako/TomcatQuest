@@ -1,6 +1,7 @@
 package ua.quest.question;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,8 @@ import java.util.List;
 public class QuestionList {
 
     @Getter
-    private static final List<Question> questions = new ArrayList();
+    @Setter
+    private static List<Question> questions = new ArrayList();
 
     static{
         questions.add(new Question("You must decide which path to take", "The left path, which is shrouded in mist", "The right path, which is well-trodden and appears safe", 1, "The well-trodden path leads you into a hidden pit trap. With no way to climb out and no one around to help."));

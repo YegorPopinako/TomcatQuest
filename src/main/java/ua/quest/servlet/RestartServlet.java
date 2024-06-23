@@ -24,6 +24,7 @@ public class RestartServlet extends HttpServlet {
 
         if((Boolean) session.getAttribute("win")) {
             getServletContext().getRequestDispatcher("/win.jsp").forward(req, resp);
+            return;
         }
         getServletContext().getRequestDispatcher("/failure.jsp").forward(req, resp);
     }
