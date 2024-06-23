@@ -10,7 +10,7 @@
         <h1>Failure</h1>
     </header>
     <main class="main-content">
-        <p>You lost. Try again</p>
+        <p>${question.getWrongOptionResult()}</p>
         <button onclick="window.location.href='/quest';" class="submit-button">Retry</button>
     </main>
 </div>
