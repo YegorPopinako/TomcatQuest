@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.quest.question.Question;
 import ua.quest.question.QuestionList;
 
@@ -13,6 +15,8 @@ import java.io.IOException;
 
 @WebServlet(name = "QuestServlet", value = "/quest")
 public class QuestServlet extends HttpServlet {
+
+    private static final Logger logger = LogManager.getLogger(QuestServlet.class);
 
     private final int winNumber = QuestionList.getQuestions().size();
 
@@ -27,9 +31,10 @@ public class QuestServlet extends HttpServlet {
         }
 
         int questionNumber = (Integer) session.getAttribute("questionNumber");
-
         Question question = QuestionList.getQuestions().get(questionNumber);
         session.setAttribute("question", question);
+
+        logger.info("Serving question number {}", questionNumber);
 
         getServletContext().getRequestDispatcher("/quest.jsp").forward(req, resp);
     }
@@ -42,8 +47,11 @@ public class QuestServlet extends HttpServlet {
             int questionNumber = (Integer) session.getAttribute("questionNumber");
             session.setAttribute("questionNumber", questionNumber + 1);
 
+            logger.info("Correct answer for question number {}", questionNumber);
+
             if (questionNumber + 1 >= winNumber) {
                 session.setAttribute("win", true);
+                logger.info("Player won the game");
                 resp.sendRedirect("/restart");
                 return false;
             }
@@ -51,6 +59,7 @@ public class QuestServlet extends HttpServlet {
             return true;
         } else {
             session.setAttribute("win", false);
+            logger.info("Incorrect answer for question number {}", session.getAttribute("questionNumber"));
             resp.sendRedirect("/restart");
             return false;
         }
