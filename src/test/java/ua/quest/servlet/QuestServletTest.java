@@ -3,10 +3,10 @@ package ua.quest.servlet;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ua.quest.question.Question;
 import ua.quest.question.QuestionList;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,8 +48,7 @@ class QuestServletTest {
     private ServletContext servletContext;
 
     @BeforeEach
-    @SneakyThrows
-    public void setUp(){
+    public void setUp() throws ServletException {
         when(req.getSession(true)).thenReturn(session);
 
         List<Question> questions = new ArrayList<>();
@@ -60,8 +60,7 @@ class QuestServletTest {
     }
 
     @Test
-    @SneakyThrows
-    void testDoGet_WithCorrectAnswer() {
+    void testDoGet_WithCorrectAnswer() throws ServletException, IOException {
         when(session.getAttribute("questionNumber")).thenReturn(0);
         when(session.getAttribute("question")).thenReturn(QuestionList.getQuestions().get(0));
         when(req.getParameter("answer")).thenReturn("1");
@@ -76,8 +75,7 @@ class QuestServletTest {
     }
 
     @Test
-    @SneakyThrows
-    void testDoGet_WithIncorrectAnswer() {
+    void testDoGet_WithIncorrectAnswer() throws ServletException, IOException {
         when(session.getAttribute("question")).thenReturn(QuestionList.getQuestions().get(0));
         when(req.getParameter("answer")).thenReturn("2");
 

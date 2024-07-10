@@ -26,6 +26,7 @@ public class QuestServlet extends HttpServlet {
 
         if (req.getParameter("answer") != null) {
             if (!checkAnswer(req, resp, session)) {
+                logger.info("Player won the game");
                 return;
             }
         }

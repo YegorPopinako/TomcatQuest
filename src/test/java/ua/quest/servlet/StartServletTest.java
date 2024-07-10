@@ -3,16 +3,18 @@ package ua.quest.servlet;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.io.IOException;
 
 @ExtendWith(MockitoExtension.class)
 class StartServletTest extends Mockito {
@@ -39,8 +41,7 @@ class StartServletTest extends Mockito {
     private ServletContext servletContext;
 
     @Test
-    @SneakyThrows
-    void testDoGet() {
+    void testDoGet() throws ServletException, IOException {
 
         when(req.getSession(true)).thenReturn(session);
         when(req.getRequestedSessionId()).thenReturn("1234567890123456");

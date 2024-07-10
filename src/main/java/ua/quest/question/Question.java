@@ -1,10 +1,5 @@
 package ua.quest.question;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@AllArgsConstructor
-@Getter
 public class Question {
 
     private String question;
@@ -12,4 +7,32 @@ public class Question {
     private String option2;
     private int answer;
     private String wrongOptionResult;
+
+    public Question(String question, String option1, String option2, int answer, String wrongOptionResult) {
+        this.question = question;
+        this.option1 = option1;
+        this.option2 = option2;
+        this.answer = answer;
+        this.wrongOptionResult = wrongOptionResult;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public String getOption1() {
+        return option1;
+    }
+
+    public String getOption2() {
+        return option2;
+    }
+
+    public int getAnswer() {
+        return answer;
+    }
+
+    public String getWrongOptionResult() {
+        return wrongOptionResult;
+    }
 }

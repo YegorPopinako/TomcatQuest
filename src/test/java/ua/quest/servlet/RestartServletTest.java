@@ -3,15 +3,17 @@ package ua.quest.servlet;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.io.IOException;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -41,8 +43,7 @@ class RestartServletTest {
     private ServletContext servletContext;
 
     @Test
-    @SneakyThrows
-    void testDoGet_WithWin() {
+    void testDoGet_WithWin() throws ServletException, IOException {
         when(req.getSession(true)).thenReturn(session);
         when(session.getAttribute("counter")).thenReturn(0);
         when(session.getAttribute("win")).thenReturn(true);
@@ -58,8 +59,7 @@ class RestartServletTest {
     }
 
     @Test
-    @SneakyThrows
-    void testDoGet_WithLose() {
+    void testDoGet_WithLose() throws ServletException, IOException {
         when(req.getSession(true)).thenReturn(session);
         when(session.getAttribute("counter")).thenReturn(0);
         when(session.getAttribute("win")).thenReturn(false);

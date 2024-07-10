@@ -6,9 +6,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 public class QuestionList {
 
+    private static Logger logger = Logger.getLogger(QuestionList.class.getName());
     private static List<Question> questions = new ArrayList<>();
 
     private static final int QUESTION_INDEX = 0;
@@ -34,7 +36,7 @@ public class QuestionList {
                 ));
             }
         } catch (IOException e) {
-            e.getCause();
+            logger.warning("Error reading questions file");
         }
     }
 
