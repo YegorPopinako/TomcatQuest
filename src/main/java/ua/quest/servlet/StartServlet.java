@@ -1,4 +1,4 @@
-package org.example.servlets;
+package ua.quest.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,7 +17,9 @@ public class StartServlet extends HttpServlet {
 
         HttpSession currentSession = req.getSession(true);
 
-        currentSession.setAttribute("test", "testing");
+        currentSession.setAttribute("counter", 0);
+        currentSession.setAttribute("ID", req.getRequestedSessionId());
+        currentSession.setAttribute("questionNumber", 0);
 
         getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
     }
